@@ -18,48 +18,135 @@ body {
     color: white;
     font-family: 'Aliya', sans-serif;
     font-size: 24px;
-    line-height: 24px;
-}
-
-#app {
-    max-height: calc(100vh - 60px);
-    overflow: auto;
+    line-height: 20px;
 }
 
 h1 {
     font-size: 48px;
-    line-height: 48px;
+    line-height: 42px;
     margin: 5px 0;
     text-align: center;
     text-decoration: underline;
     text-underline-position: under;
 }
 
-table {
-    width: calc(100% - 50px);
+#app {
+    max-width: 1600px;
+    display: flex;
+    flex-wrap: wrap;
     margin: 20px auto;
-    border-collapse: collapse;
+    align-content: space-between;
+    justify-content: space-evenly;
 }
 
-tr {
-    border: 2px solid wheat;
+.card {
+    display: inline-block;
+    width: 30%;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+
+    background-color: cornsilk;
+    color: rgb(30, 30, 30);
 }
 
-tr:hover td {
-    cursor: pointer;
-    background-color: rgb(0, 0, 0);
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-}
-
-th {
-    text-transform: uppercase;
-    font-size: 28px;
-    line-height: 28px;
-    text-align: left;
-}
-
-th, td {
-    padding: 10px 15px;
+.card {
+    display: flex;
+    flex-direction: column;
     font-weight: bold;
+}
+
+.card .top {
+    display: flex;
+    align-items: center;
+    height: 150px;
+}
+
+.card .top .left {
+    width: 70%;
+    padding-right: 10px;
+}
+
+.card .top .right {
+    width: 30%;
+    text-align: center;
+}
+
+.card .btm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .name {
+    font-size: 32px;
+    line-height: 26px;
+    padding: 10px 0;
+    /* font-weight: bold; */
+}
+
+.card .address,
+.card .btm {
+    color: grey;
+}
+
+.card .fees {
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    display: inline-flex;
+}
+
+.card .minAge {
+    background-color: crimson;
+    color: white;
+    padding: 10px;
+    border-radius: 100px;
+    font-weight: bold;
+}
+
+.card .free {
+    background-color: green;
+    color: white;
+}
+
+.card .paid {
+    background-color: purple;
+    color: white;
+}
+
+.card .dose1 span,
+.card .dose2 span {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    width: 50px;
+    text-align: center;
+}
+
+.card .oops {
+    color: red;
+    border-color: red;
+}
+
+.card .yayy {
+    color: green;
+    border-color: green;
+}
+
+@media screen and (max-width:1200px) {
+    .card {
+        width: 45%;
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .card {
+        max-width: 500px;
+        width: calc(100% - 50px);
+        margin: 20px 0;
+    }
 }

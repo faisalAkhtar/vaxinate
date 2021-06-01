@@ -182,30 +182,51 @@ function init() {
 
 function makeTable(sessions) {
     let htm = ""
-    htm += "<table> \n"
-    htm += "<tr> \n"
-    htm += "<th>Centre ID</th> \n"
-    htm += "<th>Name</th> \n"
-    htm += "<th>Address</th> \n"
-    htm += "<th>Fees</th> \n"
-    htm += "<th>Dose-1</th> \n"
-    htm += "<th>Dose-2</th> \n"
-    htm += "<th>Vaccine</th> \n"
-    htm += "</tr> \n"
 
     sessions.forEach(item => {
-        htm += "<tr> \n"
-        htm += "<td>" + item['center_id'] + "</td> \n"
-        htm += "<td>" + item['name'] + "</td> \n"
-        htm += "<td>" + item['address'] + "<br>PIN : " + item['pincode'] + "</td> \n"
-        htm += "<td>" + (item['fee_type'] == "Free" ? "Free" : item['fee']) + "</td> \n"
-        htm += "<td>" + item['available_capacity_dose1'] + "</td> \n"
-        htm += "<td>" + item['available_capacity_dose2'] + "</td> \n"
-        htm += "<td>" + item['vaccine'] + "</td> \n"
-        htm += "</tr> \n"
+        htm += makeCard(
+            item['center_id'],
+            item['name'],
+            item['address'],
+            item['pincode'],
+            item['fee'],
+            item['available_capacity_dose1'],
+            item['available_capacity_dose2'],
+            item['vaccine'],
+            item['min_age_limit']
+        )
     })
 
-    htm += "</table> \n"
-
     document.querySelector("#app").innerHTML = htm
+}
+
+function makeCard(centre, name, address, pincode, fee, doseA, doseB, vaccine, minAge) {
+    let fees = fee == "0" ? "FREE" : "Rs "+fee
+    let feesClass = fee == "0" ? "free" : "paid"
+
+    let dose1 = doseA == "0" ? "&times;" : doseA
+    let dose1Class = doseA == "0" ? "oops" : "yayy"
+    let dose2 = doseB == "0" ? "&times;" : doseB
+    let dose2Class = doseB == "0" ? "oops" : "yayy"
+
+    let div = "\n"
+    div += "<div class='card'> \n"
+    div += "<div class='top'> \n"
+        div += "<div class='left'> \n"
+            div += "<div class='name' data-centreId='" + centre + "'>" + name + "</div> \n"
+            div += "<div class='address'>" + address + " " + pincode + "</div> \n"
+        div += "</div> \n"
+        div += "<div class='right'> \n"
+            div += "<div class='vaccine'>" + vaccine + "</div> \n"
+            div += "<div class='fees "+feesClass+"'>" + fees + "</div> \n"
+        div += "</div> \n"
+    div += "</div> \n"
+    div += "<div class='btm'> \n"
+        div += "<div class='minAge'>Age " + minAge + "</div> \n"
+        div += "<div class='dose1'>Dose 1 <span class='"+dose1Class+"'>" + dose1 + "</span></div> \n"
+        div += "<div class='dose2'>Dose 2 <span class='"+dose2Class+"'>" + dose2 + "</span></div> \n"
+    div += "</div> \n"
+    div += "</div> \n"
+
+    return div
 }
