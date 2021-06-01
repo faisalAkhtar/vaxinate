@@ -1,0 +1,65 @@
+@font-face {
+	font-family: 'Aliya';
+	src: url(./Aliya-Regular.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-family: 'Aliya', sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+#app {
+    max-height: calc(100vh - 60px);
+    overflow: auto;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 48px;
+    margin: 5px 0;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+table {
+    width: calc(100% - 50px);
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 2px solid wheat;
+}
+
+tr:hover td {
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 15px;
+    font-weight: bold;
+}
