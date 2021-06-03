@@ -2069,11 +2069,6 @@ let hospitals = {
 
 function init() {
     facilitateDates()
-    let prefferedDate = "09-06-2021",
-        prefferedAge = "18",
-        prefferedVaccine = "COVISHIELD",
-        prefferedFee = "Paid"
-    displayData(prefferedDate, prefferedAge, prefferedVaccine, prefferedFee)
 }
 
 function facilitateDates() {
@@ -2084,7 +2079,7 @@ function facilitateDates() {
     month = date.getMonth() + 1
     if (month < 10) month = "0" + month
     day = date.getDate()
-    
+
     let options = ""
     for (let ind = 0; ind <= 7; ind++, day++) {
         date = (day < 10 ? "0" + day : day) + "-" + month + "-" + year
@@ -2094,23 +2089,26 @@ function facilitateDates() {
     document.getElementsByName("date")[0].innerHTML = options
 }
 
-function submitForm(form) {
-    displayData(form.date.value, form.age.value, form.vaccine.value, form.fee.value)
-    return false
+function getVaccines(form) {
+    if(form.vaccine.value == "") {
+        alert("Please select a vaccine type")
+        return
+    }
+    displayData(form.date.value, form.vaccine.value)
 }
 
-function displayData(prefferedDate, prefferedAge, prefferedVaccine, prefferedFee) {
+function displayData(prefferedDate, prefferedVaccine) {
     let htm = ""
 
     let centers = hospitals.centers
     centers.forEach(item => {
-        htm += processCentreDetails(item, prefferedDate, prefferedAge, prefferedVaccine, prefferedFee)
+        htm += processCentreDetails(item, prefferedDate, prefferedVaccine)
     })
 
     document.querySelector("#app").innerHTML = htm
 }
 
-function processCentreDetails(centre, prefferedDate, prefferedAge, prefferedVaccine, prefferedFee) {
+function processCentreDetails(centre, prefferedDate, prefferedVaccine) {
     let cards = ""
     let fees, feesClass, dose1, dose1Class, dose2, dose2Class
     
@@ -2122,7 +2120,7 @@ function processCentreDetails(centre, prefferedDate, prefferedAge, prefferedVacc
 
     centre.sessions.forEach(session => {
         // PREFERRABLE OPTIONS
-        if(session['date'] == prefferedDate && session['min_age_limit'] == prefferedAge && session['vaccine'] == prefferedVaccine) {
+        if(session['date'] == prefferedDate && session['min_age_limit'] == "18" && session['vaccine'] == prefferedVaccine) {
 
             dose1 = session['available_capacity_dose1'] == "0" ? "&times;" : session['available_capacity_dose1']
             dose1Class = session['available_capacity_dose1'] == "0" ? "oops" : "yayy"

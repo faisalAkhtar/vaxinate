@@ -24,8 +24,6 @@ h1 {
     line-height: 42px;
     margin: 5px 0;
     text-align: center;
-    text-decoration: underline;
-    text-underline-position: under;
 }
 
 #app {
@@ -41,11 +39,12 @@ form {
     text-align: center;
 }
 
-input, select, button {
+select {
     font-family: inherit;
     font-size: inherit;
     padding: 5px 10px;
     cursor: pointer;
+    margin: 0 10px;
 }
 
 .card {
