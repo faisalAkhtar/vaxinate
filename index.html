@@ -12,6 +12,27 @@
 <body>
     <div>
         <h1>APP</h1>
+        <form onsubmit="return submitForm(this)">
+            <select name="date">
+            </select>
+
+            <select name="age">
+                <option value="18">18</option>
+                <option value="45">45</option>
+            </select>
+
+            <select name="vaccine">
+                <option value="COVAXIN">COVAXIN</option>
+                <option value="COVISHIELD">COVISHIELD</option>
+            </select>
+
+            <select name="fee">
+                <option value="FREE">FREE</option>
+                <option value="PAID">PAID</option>
+            </select>
+
+            <button type="submit">SHOW</button>
+        </form>
         <div id="app"></div>
     </div>
     <script src="script.js"></script>

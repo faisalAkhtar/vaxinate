@@ -8,8 +8,6 @@
 }
 
 html, body {
-    min-height: 100%;
-    width: 100%;
     margin: 0;
 }
 
@@ -37,6 +35,17 @@ h1 {
     margin: 20px auto;
     align-content: space-between;
     justify-content: space-evenly;
+}
+
+form {
+    text-align: center;
+}
+
+input, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .card {
