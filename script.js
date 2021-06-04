@@ -2083,17 +2083,15 @@ function facilitateDates() {
     let options = ""
     for (let ind = 0; ind <= 7; ind++, day++) {
         date = (day < 10 ? "0" + day : day) + "-" + month + "-" + year
-        options += "<option value=\"" + date + "\">" + date + "</option> \n"
+
+        options += "<input type='radio' name='date' id=\"" + date + "\" value=\"" + date + "\"> \n"
+        options += "<label for=\"" + date + "\">" + date + "</label> \n"
     }
 
-    document.getElementsByName("date")[0].innerHTML = options
+    document.getElementById("date").innerHTML = options
 }
 
 function getVaccines(form) {
-    if(form.vaccine.value == "") {
-        alert("Please select a vaccine type")
-        return
-    }
     displayData(form.date.value, form.vaccine.value)
 }
 

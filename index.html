@@ -10,20 +10,30 @@
 </head>
 
 <body>
-    <div>
+    <header>
         <h1>Vaccines</h1>
-        <form onchange="getVaccines(this)" onsubmit="return false">
-            <select name="date">
-            </select>
 
-            <select name="vaccine">
-                <option value="" selected disabled>Choose Vaccine</option>
-                <option value="COVAXIN">COVAXIN</option>
-                <option value="COVISHIELD">COVISHIELD</option>
-            </select>
+        <form onchange="getVaccines(this)" onsubmit="return false">
+            <div id="vaccine">
+                <input type="radio" name="vaccine" id="COVAXIN" value="COVAXIN">
+                <label for="COVAXIN">COVAXIN</label>
+                <input type="radio" name="vaccine" id="COVISHIELD" value="COVISHIELD">
+                <label for="COVISHIELD">COVISHIELD</label>
+            </div>
+
+            <div id="date">
+            </div>
         </form>
+
+        <footer>
+            <p>For personal use only</p>
+            <p>&copy; <a target="_blank" href="https://faisalakhtar.github.io/">Faisal Akhtar</a></p>
+        </footer>
+    </header>
+
+    <main>
         <div id="app"></div>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 

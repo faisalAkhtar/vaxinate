@@ -1,6 +1,6 @@
 @font-face {
-	font-family: 'Aliya';
-	src: url(./Aliya-Regular.ttf);
+    font-family: 'Aliya';
+    src: url(./Aliya-Regular.ttf);
 }
 
 * {
@@ -9,6 +9,7 @@
 
 html, body {
     margin: 0;
+    height: 100%;
 }
 
 body {
@@ -17,6 +18,34 @@ body {
     font-family: 'Aliya', sans-serif;
     font-size: 24px;
     line-height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer {
+    text-align: center;
+    font-weight: bold;
+}
+
+a {
+    color: inherit;
+    text-underline-position: under;
+}
+
+main {
+    width: 70%;
+}
+
+header, main {
+    max-height: 100%;
+    overflow: auto;
 }
 
 h1 {
@@ -27,7 +56,6 @@ h1 {
 }
 
 #app {
-    max-width: 1600px;
     display: flex;
     flex-wrap: wrap;
     margin: 20px auto;
@@ -36,15 +64,32 @@ h1 {
 }
 
 form {
-    text-align: center;
+    padding: 20px 50px;
 }
 
-select {
-    font-family: inherit;
-    font-size: inherit;
-    padding: 5px 10px;
+form>div {
+    border: 2px solid wheat;
+    max-width: 300px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+label {
+    display: block;
+    padding: 8px;
     cursor: pointer;
-    margin: 0 10px;
+    text-align: center;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+input[type="radio"]:checked+label {
+    background-color: wheat;
+    color: black;
 }
 
 .card {
@@ -53,7 +98,6 @@ select {
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
-
     background-color: cornsilk;
     color: rgb(30, 30, 30);
 }
@@ -93,8 +137,7 @@ select {
     /* font-weight: bold; */
 }
 
-.card .address,
-.card .btm {
+.card .address, .card .btm {
     color: grey;
 }
 
@@ -123,8 +166,7 @@ select {
     color: white;
 }
 
-.card .dose1 span,
-.card .dose2 span {
+.card .dose1 span, .card .dose2 span {
     display: inline-block;
     padding: 5px;
     border-radius: 10px;
@@ -144,10 +186,31 @@ select {
     border-color: green;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1600px) {
     .card {
         width: 45%;
         margin: 20px 0;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    header, main {
+        width: 100%;
+        max-height: unset;
+        justify-content: flex-start;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    form>div {
+        display: flex;
+        max-width: unset;
+    }
+    #date {
+        min-width: 700px;
+        overflow: auto;
     }
 }
 
