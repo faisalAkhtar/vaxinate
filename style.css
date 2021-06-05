@@ -124,6 +124,17 @@ input[type="radio"]:checked+label {
     color: black;
 }
 
+#result {
+    text-align: center;
+}
+
+.noneCard {
+    display: block;
+    max-width: 300px;
+    width: calc(100% - 100px);
+    border-radius: 5px;
+}
+
 .card {
     display: inline-block;
     width: 30%;
@@ -230,6 +241,9 @@ input[type="radio"]:checked+label {
         width: 100%;
         max-height: unset;
         justify-content: flex-start;
+    }
+    header {
+        padding-top: 20px;
     }
     form {
         display: flex;
