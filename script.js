@@ -2,6 +2,14 @@ window.onload = () => {
     init()
 }
 
+window.onresize = () => {
+    if (window.innerWidth > 900) {
+        facilitateDates(false)
+    } else if (window.innerWidth <= 900) {
+        facilitateDates(true)
+    }
+}
+
 let hospitals = {
     "centers": [
         {
@@ -2068,10 +2076,18 @@ let hospitals = {
 }
 
 function init() {
-    facilitateDates()
+    if (window.innerWidth > 900) {
+        facilitateDates(false)
+    } else if (window.innerWidth <= 900) {
+        facilitateDates(true)
+    }
+
+    document.getElementsByName("date")[0].checked = true
+    document.getElementsByName("vaccine")[0].checked = true
+    displayData(document.getElementsByName("date")[0].value, document.getElementsByName("vaccine")[0].value)
 }
 
-function facilitateDates() {
+function facilitateDates(flag) {
     let date = new Date()
 
     let day, month, year
@@ -2081,14 +2097,20 @@ function facilitateDates() {
     day = date.getDate()
 
     let options = ""
+    if (flag) options += "<select name='date'> \n"
     for (let ind = 0; ind <= 7; ind++, day++) {
         date = (day < 10 ? "0" + day : day) + "-" + month + "-" + year
 
-        options += "<input type='radio' name='date' id=\"" + date + "\" value=\"" + date + "\"> \n"
-        options += "<label for=\"" + date + "\">" + date + "</label> \n"
+        if (flag) {
+            options += "<option value=\"" + date + "\">" + date + "</option> \n"
+        } else {
+            options += "<input type='radio' name='date' id=\"" + date + "\" value=\"" + date + "\"> \n"
+            options += "<label for=\"" + date + "\">" + date + "</label> \n"
+        }
     }
+    if (flag) options += "</select> \n"
 
-    document.getElementById("date").innerHTML = options
+    document.getElementsByClassName("date")[0].innerHTML = options
 }
 
 function getVaccines(form) {
@@ -2109,7 +2131,7 @@ function displayData(prefferedDate, prefferedVaccine) {
 function processCentreDetails(centre, prefferedDate, prefferedVaccine) {
     let cards = ""
     let fees, feesClass, dose1, dose1Class, dose2, dose2Class
-    
+
     fees = "FREE"
     if (centre['fee_type'] == "Paid") {
         fees = "Rs " + centre['vaccine_fees'][0]['fee']
@@ -2118,13 +2140,13 @@ function processCentreDetails(centre, prefferedDate, prefferedVaccine) {
 
     centre.sessions.forEach(session => {
         // PREFERRABLE OPTIONS
-        if(session['date'] == prefferedDate && session['min_age_limit'] == "18" && session['vaccine'] == prefferedVaccine) {
+        if (session['date'] == prefferedDate && session['min_age_limit'] == "18" && session['vaccine'] == prefferedVaccine) {
 
             dose1 = session['available_capacity_dose1'] == "0" ? "&times;" : session['available_capacity_dose1']
             dose1Class = session['available_capacity_dose1'] == "0" ? "oops" : "yayy"
             dose2 = session['available_capacity_dose2'] == "0" ? "&times;" : session['available_capacity_dose2']
             dose2Class = session['available_capacity_dose2'] == "0" ? "oops" : "yayy"
-        
+
             cards += makeCard(
                 centre['center_id'],
                 centre['name'],
@@ -2148,19 +2170,19 @@ function makeCard(centre, name, address, pincode, fees, feesClass, dose1, dose1C
     let div = "\n"
     div += "<div class='card'> \n"
     div += "<div class='top'> \n"
-        div += "<div class='left'> \n"
-            div += "<div class='name' data-centreId='" + centre + "'>" + name + "</div> \n"
-            div += "<div class='address'>" + address + " " + pincode + "</div> \n"
-        div += "</div> \n"
-        div += "<div class='right'> \n"
-            div += "<div class='vaccine'>" + vaccine + "</div> \n"
-            div += "<div class='fees "+feesClass+"'>" + fees + "</div> \n"
-        div += "</div> \n"
+    div += "<div class='left'> \n"
+    div += "<div class='name' data-centreId='" + centre + "'>" + name + "</div> \n"
+    div += "<div class='address'>" + address + " " + pincode + "</div> \n"
+    div += "</div> \n"
+    div += "<div class='right'> \n"
+    div += "<div class='vaccine'>" + vaccine + "</div> \n"
+    div += "<div class='fees " + feesClass + "'>" + fees + "</div> \n"
+    div += "</div> \n"
     div += "</div> \n"
     div += "<div class='btm'> \n"
-        div += "<div class='minAge'>Age " + minAge + "</div> \n"
-        div += "<div class='dose1'>Dose 1 <span class='"+dose1Class+"'>" + dose1 + "</span></div> \n"
-        div += "<div class='dose2'>Dose 2 <span class='"+dose2Class+"'>" + dose2 + "</span></div> \n"
+    div += "<div class='minAge'>Age " + minAge + "</div> \n"
+    div += "<div class='dose1'>Dose 1 <span class='" + dose1Class + "'>" + dose1 + "</span></div> \n"
+    div += "<div class='dose2'>Dose 2 <span class='" + dose2Class + "'>" + dose2 + "</span></div> \n"
     div += "</div> \n"
     div += "</div> \n"
 
