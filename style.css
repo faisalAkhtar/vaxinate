@@ -1,3 +1,24 @@
+:root {
+    --primary: #1e1e1e;
+    --secondary: #f5deb3;
+    --white: #ffffff;
+    --grey: #737373;
+    --red: #ed143d;
+    --green: #079207;
+    --purple: #951095;
+}
+
+::-webkit-scrollbar {
+	background: var(--primary);
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--secondary);
+	border-radius: 4px;
+}
+
 @font-face {
     font-family: 'Aliya';
     src: url(./Aliya-Regular.ttf);
@@ -13,8 +34,8 @@ html, body {
 }
 
 body {
-    background-color: rgb(30, 30, 30);
-    color: white;
+    background-color: var(--primary);
+    color: var(--white);
     font-family: 'Aliya', sans-serif;
     font-size: 24px;
     line-height: 20px;
@@ -66,7 +87,7 @@ form {
 }
 
 form>div {
-    border: 2px solid wheat;
+    border: 2px solid var(--secondary);
     max-width: 300px;
     margin: 10px auto;
     border-radius: 5px;
@@ -79,29 +100,29 @@ select {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    color: wheat;
+    color: var(--secondary);
     line-height: 1;
     outline: 0;
     border: none;
-    border-bottom: 2px solid wheat;
+    border-bottom: 2px solid var(--secondary);
     padding: 10px 30px 0px 12px;
     border-radius: 0;
-    background-color: #1e1e1e;
-    background-image: linear-gradient(#1e1e1e, #1e1e1e), linear-gradient(-135deg, transparent 50%, #1e1e1e 50%), linear-gradient(-225deg, transparent 50%, #1e1e1e 50%), linear-gradient(#1e1e1e 42%, wheat 42%);
+    background-color: var(--primary);
+    background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient(-135deg, transparent 50%, var(--primary) 50%), linear-gradient(-225deg, transparent 50%, var(--primary) 50%), linear-gradient(var(--primary) 42%, var(--secondary) 42%);
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-size: 1px 100%, 32px 30px, 24px 27px, 21px 100%;
     background-position: right 20px center, right bottom, right bottom, right bottom;
 }
 
 select:hover {
-    background-image: linear-gradient(#1e1e1e, #1e1e1e), linear-gradient(-135deg, transparent 50%, #1e1e1e 50%), linear-gradient(-225deg, transparent 50%, #1e1e1e 50%), linear-gradient(#1e1e1e 42%, wheat 42%);
+    background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient(-135deg, transparent 50%, var(--primary) 50%), linear-gradient(-225deg, transparent 50%, var(--primary) 50%), linear-gradient(var(--primary) 42%, var(--secondary) 42%);
 }
 
 select:active {
-    background-image: linear-gradient(#1e1e1e, #1e1e1e), linear-gradient(-135deg, transparent 50%, #1e1e1e 50%), linear-gradient(-225deg, transparent 50%, #1e1e1e 50%), linear-gradient(#1e1e1e 42%, wheat 42%);
-    color: wheat;
-    border-color: #1e1e1e;
-    background-color: #1e1e1e;
+    background-image: linear-gradient(var(--primary), var(--primary)), linear-gradient(-135deg, transparent 50%, var(--primary) 50%), linear-gradient(-225deg, transparent 50%, var(--primary) 50%), linear-gradient(var(--primary) 42%, var(--secondary) 42%);
+    color: var(--secondary);
+    border-color: var(--primary);
+    background-color: var(--primary);
 }
 
 input[type='radio'] {
@@ -118,12 +139,13 @@ label {
 }
 
 input[type="radio"]:checked+label {
-    background-color: wheat;
-    color: black;
+    background-color: var(--secondary);
+    color: var(--primary);
 }
 
 #result {
     text-align: center;
+    font-weight: bold;
 }
 
 .noneCard {
@@ -139,8 +161,8 @@ input[type="radio"]:checked+label {
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
-    background-color: cornsilk;
-    color: rgb(30, 30, 30);
+    background-color: var(--secondary);
+    color: var(--primary);
 }
 
 .card {
@@ -175,11 +197,10 @@ input[type="radio"]:checked+label {
     font-size: 32px;
     line-height: 26px;
     padding: 10px 0;
-    /* font-weight: bold; */
 }
 
 .card .address, .card .btm {
-    color: grey;
+    color: var(--grey);
 }
 
 .card .fees {
@@ -190,21 +211,21 @@ input[type="radio"]:checked+label {
 }
 
 .card .minAge {
-    background-color: crimson;
-    color: white;
+    background-color: var(--red);
+    color: var(--white);
     padding: 10px;
     border-radius: 100px;
     font-weight: bold;
 }
 
 .card .free {
-    background-color: green;
-    color: white;
+    background-color: var(--green);
+    color: var(--white);
 }
 
 .card .paid {
-    background-color: purple;
-    color: white;
+    background-color: var(--purple);
+    color: var(--white);
 }
 
 .card .dose1 span, .card .dose2 span {
@@ -218,13 +239,13 @@ input[type="radio"]:checked+label {
 }
 
 .card .oops {
-    color: red;
-    border-color: red;
+    color: var(--red);
+    border-color: var(--red);
 }
 
 .card .yayy {
-    color: green;
-    border-color: green;
+    color: var(--green);
+    border-color: var(--green);
 }
 
 @media screen and (max-width:1600px) {
