@@ -35,12 +35,18 @@ function getHospitalsFromAPI(district_id) {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 let hospitals = JSON.parse(xhr.responseText)
-                localStorage.setItem("hospitals", JSON.stringify(hospitals))
+                localStorage.setItem("hospitals_" + district_id, JSON.stringify(hospitals))
                 localStorage.setItem("faisalTime", new Date())
-                init()
+
+                console.log("Fetching hospitals. district_id : " + district_id)
+
+                displayData(
+                    document.getElementsByName("date")[0].value,
+                    document.getElementsByName("vaccine")[0].value,
+                    district_id
+                )
             } else {
-                console.log("status : " + xhr.status)
-                console.log("responseText : " + xhr.responseText)
+                alert("status : " + xhr.status + "\nresponse : " + xhr.responseText)
             }
         }
     }
@@ -48,5 +54,5 @@ function getHospitalsFromAPI(district_id) {
 }
 
 function getVaccines(form) {
-    displayData(form.date.value, form.vaccine.value)
+    displayData(form.date.value, form.vaccine.value, form.district.value)
 }

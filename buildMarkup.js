@@ -1,8 +1,11 @@
-function displayData(prefferedDate, prefferedVaccine) {
+function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
     let htm = ""
-    let hospitals = JSON.parse(localStorage.getItem("hospitals"))
+    let hospitals = JSON.parse(localStorage.getItem("hospitals_"+prefferedDistrict))
 
-    if(!hospitals) return
+    if(!hospitals) {
+        getHospitalsFromAPI(prefferedDistrict)
+        return
+    }
     let centers = hospitals.centers
     centers.forEach(item => {
         htm += processData(item, prefferedDate, prefferedVaccine)
@@ -22,7 +25,11 @@ function processData(centre, prefferedDate, prefferedVaccine) {
 
     fees = "FREE"
     if (centre['fee_type'] == "Paid") {
-        fees = "Rs " + centre['vaccine_fees'][0]['fee']
+        if(centre['vaccine_fees']) {
+            fees = "Rs " + centre['vaccine_fees'][0]['fee']
+        } else {
+            fees = "Rs " + centre['vaccine_fees']
+        }
     }
     feesClass = fees == "FREE" ? "free" : "paid"
 

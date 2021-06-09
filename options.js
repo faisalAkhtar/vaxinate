@@ -10,7 +10,12 @@ function updateDisplayStyles() {
     document.getElementsByName("date")[0].checked = true
     document.getElementsByName("vaccine")[0].checked = true
     document.getElementsByName("district")[0].checked = true
-    displayData(document.getElementsByName("date")[0].value, document.getElementsByName("vaccine")[0].value)
+
+    displayData(
+        document.getElementsByName("date")[0].value,
+        document.getElementsByName("vaccine")[0].value,
+        document.getElementsByName("district")[0].value
+    )
 }
 
 function facilitateDistricts(flag) {
