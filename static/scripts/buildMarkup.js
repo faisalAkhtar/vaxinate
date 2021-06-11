@@ -12,7 +12,7 @@ function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
     })
 
     if (htm == "") {
-        htm += "<img class='noneCard' src='./none.gif'>"
+        htm += "<img class='noneCard' src='./static/none.gif'>"
     }
 
     document.querySelector("#app").innerHTML = htm
