@@ -1,4 +1,4 @@
-function updateDisplayStyles() {
+function updateDisplayStyles(flag, values) {
     if (window.innerWidth > 900) {
         facilitateDistricts(false)
         facilitateDates(false)
@@ -7,15 +7,13 @@ function updateDisplayStyles() {
         facilitateDates(true)
     }
 
-    document.getElementsByName("date")[0].checked = true
-    document.getElementsByName("vaccine")[0].checked = true
-    document.getElementsByName("district")[0].checked = true
-
-    displayData(
-        document.getElementsByName("date")[0].value,
-        document.getElementsByName("vaccine")[0].value,
-        document.getElementsByName("district")[0].value
-    )
+    if (flag) {
+        document.getElementsByName("date")[0].checked = true
+        document.getElementsByName("vaccine")[0].checked = true
+        document.getElementsByName("district")[0].checked = true
+    } else {
+        refillForm(values)
+    }
 }
 
 function facilitateDistricts(flag) {
@@ -75,8 +73,8 @@ function facilitateDistricts(flag) {
         options += "</select> \n"
     } else {
         districts.forEach(district => {
-            options += "<input type='radio' name='district' id='district_"+district['district_id']+"' value='"+district['district_id']+"'> \n"
-            options += "<label for='district_"+district['district_id']+"'>"+district['district_name']+"</label> \n"
+            options += "<input type='radio' name='district' id='district_" + district['district_id'] + "' value='" + district['district_id'] + "'> \n"
+            options += "<label for='district_" + district['district_id'] + "'>" + district['district_name'] + "</label> \n"
         })
     }
 
@@ -118,4 +116,23 @@ function getDateString(dateObj) {
     year = dateObj.getFullYear()
 
     return (day + "-" + month + "-" + year)
+}
+
+function refillForm(values) {
+    let temp
+    let variables = ["vaccine", "date", "district"]
+
+    variables.forEach(item => {
+        temp = document.getElementsByName(item)
+        if (temp[0].type == "radio") {
+            for (let ind = 0; ind < temp.length; ind++) {
+                if (temp[ind].value == values[item]) {
+                    temp[ind].checked = true
+                    break
+                }
+            }
+        } else {
+            temp[0].value = values[item]
+        }
+    })
 }
