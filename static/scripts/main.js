@@ -1,5 +1,6 @@
 window.onload = () => {
     init()
+    removeLoader()
 }
 
 window.onresize = () => {
@@ -35,6 +36,7 @@ function checkPreviouslySavedObjects() {
 }
 
 function getHospitalsFromAPI(district_id) {
+    addLoader()
     let dateObj = new Date(),
         today = getDateString(dateObj)
 
@@ -55,6 +57,7 @@ function getHospitalsFromAPI(district_id) {
                     date = values["date"]
 
                 displayData(date, vaccine, district_id)
+                removeLoader()
             } else {
                 alert("status : " + xhr.status + "\nresponse : " + xhr.responseText)
             }
@@ -70,7 +73,7 @@ function getFormValues() {
 
     variables.forEach(item => {
         temp = document.getElementsByName(item)
-        if(temp[0].type == "radio") {
+        if (temp[0].type == "radio") {
             for (let ind = 0; ind < temp.length; ind++) {
                 if (temp[ind].checked) {
                     values[item] = temp[ind].value
@@ -83,6 +86,20 @@ function getFormValues() {
     })
 
     return values
+}
+
+function addLoader() {
+    let loader = "<div class='loading'><div></div><h2>Loading</h2></div>"
+    document.querySelector("#loader").innerHTML = loader
+}
+
+function removeLoader() {
+    setTimeout(() => {
+        document.querySelector(".loading").style.opacity = 0
+    }, 500)
+    setTimeout(() => {
+        document.querySelector(".loading").remove()
+    }, 1500)
 }
 
 function getVaccines(form) {
