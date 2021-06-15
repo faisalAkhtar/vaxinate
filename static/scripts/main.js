@@ -22,13 +22,13 @@ function init() {
 function checkPreviouslySavedObjects() {
     if (localStorage.getItem("faisalTime") == null) {
         console.log("INIT")
-        getHospitalsFromAPI("145")
+        getHospitalsFromAPI("141")
     } else {
         let then = new Date(localStorage.getItem("faisalTime"))
         let now = new Date()
         if ((now - then) / 1000 > (5 * 60)) {
             console.log("REFRESH")
-            getHospitalsFromAPI("145")
+            getHospitalsFromAPI("141")
         } else {
             console.log("DATA FETCHED AT :  " + then)
         }
