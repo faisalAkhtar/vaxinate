@@ -1,15 +1,26 @@
 function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
     let htm = ""
-    let hospitals = JSON.parse(localStorage.getItem("hospitals_"+prefferedDistrict))
+    let hospitals = JSON.parse(localStorage.getItem("hospitals_" + prefferedDistrict))
 
-    if(!hospitals) {
+    if (!hospitals) {
         getHospitalsFromAPI(prefferedDistrict)
         return
     }
     let centers = hospitals.centers
-    centers.forEach(item => {
-        htm += processData(item, prefferedDate, prefferedVaccine)
+    let dateArr = getSevenDates()
+    let col = ""
+
+    htm += "<div class='bag'>"
+    dateArr.forEach(date => {
+        htm += "<div class='col'>"
+
+        centers.forEach(item => {
+            htm += processData(item, date, prefferedVaccine)
+        })
+
+        htm += "</div>"
     })
+    htm += "</div>"
 
     if (htm == "") {
         htm += "<img class='noneCard' src='./static/none.gif'>"
@@ -25,7 +36,7 @@ function processData(centre, prefferedDate, prefferedVaccine) {
 
     fees = "FREE"
     if (centre['fee_type'] == "Paid") {
-        if(centre['vaccine_fees']) {
+        if (centre['vaccine_fees']) {
             fees = "Rs " + centre['vaccine_fees'][0]['fee']
         } else {
             fees = "Rs " + centre['vaccine_fees']
@@ -82,4 +93,14 @@ function makeCard(centre, name, address, pincode, fees, feesClass, dose1, dose1C
     div += "</div> \n"
 
     return div
+}
+
+function getSevenDates() {
+    let dateObj = new Date()
+    let dateArr = []
+    for (let ind = 0; ind < 7; ind++) {
+        dateArr.push(getDateString(dateObj))
+        dateObj.setDate(dateObj.getDate() + 1)
+    }
+    return dateArr
 }

@@ -87,7 +87,7 @@ function facilitateDates(flag) {
 
     let options = ""
     if (flag) options += "<select name='date'> \n"
-    for (let ind = 0; ind <= 7; ind++) {
+    for (let ind = 0; ind < 7; ind++) {
         date = getDateString(dateObj)
 
         if (flag) {
