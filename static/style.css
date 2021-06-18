@@ -135,14 +135,8 @@ input[type="radio"]:checked+label {
     color: var(--primary);
 }
 
-#result {
-    text-align: center;
-    font-weight: bold;
-    height: 20px;
-}
-
 #app {
-    height: calc(100% - 68px);
+    height: 100%;
 }
 
 .bag {
@@ -264,21 +258,11 @@ input[type="radio"]:checked+label {
     justify-content: center;
 }
 
-/* @media screen and (max-width:1600px) {
-    .card {
-        width: 45%;
-        margin: 20px 0;
-    }
-} */
-
 @media screen and (max-width:1200px) {
     header, main {
         width: 100%;
         max-height: unset;
         justify-content: flex-start;
-    }
-    #app {
-        height: auto;
     }
     .bag {
         width: 100vw;
@@ -295,15 +279,6 @@ input[type="radio"]:checked+label {
 }
 
 @media screen and (max-width:900px) {
-    /* .card {
-        max-width: 500px;
-        width: calc(100% - 50px);
-        margin: 20px 0;
-    } */
-    /* .card .top {
-        height: unset;
-        padding-bottom: 20px;
-    } */
     .date, .district {
         border: none;
     }

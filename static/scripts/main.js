@@ -13,7 +13,6 @@ function init() {
     updateDisplayStyles(true)
 
     displayData(
-        document.getElementsByName("date")[0].value,
         document.getElementsByName("vaccine")[0].value,
         document.getElementsByName("district")[0].value
     )
@@ -53,10 +52,9 @@ function getHospitalsFromAPI(district_id) {
                 console.log("Fetching hospitals. district_id : " + district_id)
 
                 let values = getFormValues(),
-                    vaccine = values["vaccine"],
-                    date = values["date"]
+                    vaccine = values["vaccine"]
 
-                displayData(date, vaccine, district_id)
+                displayData(vaccine, district_id)
                 removeLoader()
             } else {
                 alert("status : " + xhr.status + "\nresponse : " + xhr.responseText)
@@ -68,7 +66,7 @@ function getHospitalsFromAPI(district_id) {
 
 function getFormValues() {
     let values = {}
-    let variables = ["vaccine", "date", "district"]
+    let variables = ["vaccine", "district"]
     let temp
 
     variables.forEach(item => {
@@ -103,5 +101,19 @@ function removeLoader() {
 }
 
 function getVaccines(form) {
-    displayData(form.date.value, form.vaccine.value, form.district.value)
+    displayData(form.vaccine.value, form.district.value)
+}
+
+function getDateString(dateObj) {
+    let day, month, year
+
+    day = dateObj.getDate()
+    day = day < 10 ? "0" + day : day
+
+    month = dateObj.getMonth() + 1
+    month = month < 10 ? "0" + month : month
+
+    year = dateObj.getFullYear()
+
+    return (day + "-" + month + "-" + year)
 }

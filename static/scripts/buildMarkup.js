@@ -1,4 +1,4 @@
-function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
+function displayData(prefferedVaccine, prefferedDistrict) {
     let htm = ""
     let hospitals = JSON.parse(localStorage.getItem("hospitals_" + prefferedDistrict))
 
@@ -15,8 +15,13 @@ function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
         htm += "<div class='col'>"
 
         centers.forEach(item => {
-            htm += processData(item, date, prefferedVaccine)
+            col += processData(item, date, prefferedVaccine)
         })
+
+        if (col === "") {
+            htm += getThullu()
+        } else htm += col
+        col = ""
 
         htm += "</div>"
     })
@@ -27,7 +32,6 @@ function displayData(prefferedDate, prefferedVaccine, prefferedDistrict) {
     }
 
     document.querySelector("#app").innerHTML = htm
-    document.querySelector("#result").innerHTML = "Results : " + prefferedVaccine + " | " + prefferedDate
 }
 
 function processData(centre, prefferedDate, prefferedVaccine) {
@@ -90,6 +94,15 @@ function makeCard(centre, name, address, pincode, fees, feesClass, dose1, dose1C
     div += "<div class='dose1'>Dose 1 <span class='" + dose1Class + "'>" + dose1 + "</span></div> \n"
     div += "<div class='dose2'>Dose 2 <span class='" + dose2Class + "'>" + dose2 + "</span></div> \n"
     div += "</div> \n"
+    div += "</div> \n"
+
+    return div
+}
+
+function getThullu() {
+    let div = "\n"
+    div += "<div class='card thullu'> \n"
+    div += "<h1>●︿●</h1> \n"
     div += "</div> \n"
 
     return div
