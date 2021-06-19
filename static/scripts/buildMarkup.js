@@ -13,6 +13,7 @@ function displayData(prefferedVaccine, prefferedDistrict) {
     htm += "<div class='bag'>"
     dateArr.forEach(date => {
         htm += "<div class='col'>"
+        htm += "<div class='dat'>" + date + "</div>"
 
         centers.forEach(item => {
             col += processData(item, date, prefferedVaccine)

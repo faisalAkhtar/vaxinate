@@ -10,8 +10,8 @@
 
 ::-webkit-scrollbar {
     background: var(--primary);
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -155,8 +155,10 @@ input[type="radio"]:checked+label {
 }
 
 .col {
-    min-height: calc(100%);
+    height: calc(100vh - 5px);
+    min-width: 410px;
     margin: 0 10px;
+    overflow: auto;
 }
 
 .noneCard {
@@ -166,9 +168,20 @@ input[type="radio"]:checked+label {
     border-radius: 5px;
 }
 
+.dat {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgba(245, 222, 179, 0.1);
+}
+
 .card {
     display: inline-block;
-    width: 400px;
+    width: calc(100% - 5px);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -291,6 +304,12 @@ input[type="radio"]:checked+label {
 @media screen and (max-width:900px) {
     .date, .district {
         border: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .col {
+        min-width: 360px;
     }
 }
 
