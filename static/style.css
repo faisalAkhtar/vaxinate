@@ -299,6 +299,9 @@ input[type="radio"]:checked+label {
         display: flex;
         max-width: unset;
     }
+    .col {
+        height: calc(100vh - 80px);
+    }
 }
 
 @media screen and (max-width:900px) {
