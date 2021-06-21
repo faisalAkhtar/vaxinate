@@ -1,14 +1,11 @@
 function updateDisplayStyles(flag, values) {
     if (window.innerWidth > 900) {
         facilitateDistricts(false)
-        facilitateDates(false)
     } else if (window.innerWidth <= 900) {
         facilitateDistricts(true)
-        facilitateDates(true)
     }
 
     if (flag) {
-        document.getElementsByName("date")[0].checked = true
         document.getElementsByName("vaccine")[0].checked = true
         document.getElementsByName("district")[0].checked = true
     } else {
@@ -81,46 +78,9 @@ function facilitateDistricts(flag) {
     document.getElementsByClassName("district")[0].innerHTML = options
 }
 
-function facilitateDates(flag) {
-    const dateObj = new Date()
-    let date
-
-    let options = ""
-    if (flag) options += "<select name='date'> \n"
-    for (let ind = 0; ind <= 7; ind++) {
-        date = getDateString(dateObj)
-
-        if (flag) {
-            options += "<option value=\"" + date + "\">" + date + "</option> \n"
-        } else {
-            options += "<input type='radio' name='date' id=\"" + date + "\" value=\"" + date + "\"> \n"
-            options += "<label for=\"" + date + "\">" + date + "</label> \n"
-        }
-
-        dateObj.setDate(dateObj.getDate() + 1)
-    }
-    if (flag) options += "</select> \n"
-
-    document.getElementsByClassName("date")[0].innerHTML = options
-}
-
-function getDateString(dateObj) {
-    let day, month, year
-
-    day = dateObj.getDate()
-    day = day < 10 ? "0" + day : day
-
-    month = dateObj.getMonth() + 1
-    month = month < 10 ? "0" + month : month
-
-    year = dateObj.getFullYear()
-
-    return (day + "-" + month + "-" + year)
-}
-
 function refillForm(values) {
     let temp
-    let variables = ["vaccine", "date", "district"]
+    let variables = ["vaccine", "district"]
 
     variables.forEach(item => {
         temp = document.getElementsByName(item)
