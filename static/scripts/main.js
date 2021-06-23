@@ -3,14 +3,8 @@ window.onload = () => {
     removeLoader()
 }
 
-window.onresize = () => {
-    let values = getFormValues()
-    updateDisplayStyles(false, values)
-}
-
 function init() {
     checkPreviouslySavedObjects()
-    updateDisplayStyles(true)
 
     displayData(
         document.getElementsByName("vaccine")[0].value,

@@ -93,6 +93,11 @@ form > div {
     border-radius: 5px;
 }
 
+.district {
+    border: none;
+    text-align: center;
+}
+
 select {
     font-family: inherit;
     font-size: inherit;
@@ -305,21 +310,9 @@ input[type="radio"]:checked+label {
     }
 }
 
-@media screen and (max-width:900px) {
-    .date, .district {
-        border: none;
-    }
-}
-
 @media screen and (max-width:400px) {
     .col {
         min-width: 360px;
-    }
-}
-
-@media screen and (max-height: 650px) {
-    header {
-        display: block;
     }
 }
 
