@@ -11,35 +11,43 @@
 
 <body>
     <header>
-        <h1>Vaccines</h1>
-
-        <form onchange="getVaccines(this)" onsubmit="return false">
-            <div class="vaccine">
-                <input type="radio" name="vaccine" id="COVAXIN" value="COVAXIN">
-                <label for="COVAXIN">COVAXIN</label>
-                <input type="radio" name="vaccine" id="COVISHIELD" value="COVISHIELD">
-                <label for="COVISHIELD">COVISHIELD</label>
-            </div>
-
-            <div class="date">
-            </div>
-
-            <div class="district">
-            </div>
-        </form>
-
-        <footer>
-            <p>Made with &#10084; by <a target="_blank" href="https://faisalakhtar.github.io/">Faisal Akhtar</a></p>
-        </footer>
+        <div class="headerWrapper">
+            <h1>Vaxinate</h1>
+    
+            <form onchange="getVaccines(this)" onsubmit="return false">
+                <div class="vaccine">
+                    <input type="radio" name="vaccine" id="COVAXIN" value="COVAXIN" checked>
+                    <label for="COVAXIN">Covaxin</label>
+                    <input type="radio" name="vaccine" id="COVISHIELD" value="COVISHIELD">
+                    <label for="COVISHIELD">Covishield</label>
+                </div>
+    
+                <div class="district">
+                    <select name='district'>
+                        <option value="141">Central Delhi</option>
+                        <option value="145">East Delhi</option>
+                        <option value="140">New Delhi</option>
+                        <option value="146">North Delhi</option>
+                        <option value="147">North East Delhi</option>
+                        <option value="143">North West Delhi</option>
+                        <option value="148">Shahdara</option>
+                        <option value="149">South Delhi</option>
+                        <option value="144">South East Delhi</option>
+                        <option value="150">South West Delhi</option>
+                        <option value="142">West Delhi</option>
+                    </select>
+                </div>
+            </form>
+    
+            <footer>
+                <p>Made with &#10084; by <a target="_blank" href="https://faisalakhtar.github.io/">Faisal Akhtar</a></p>
+            </footer>
+        </div>
     </header>
 
     <main>
-        <p id='result'>&nbsp;</p>
         <div id="app"></div>
     </main>
-    <script src="./static/scripts/main.js"></script>
-    <script src="./static/scripts/options.js"></script>
-    <script src="./static/scripts/buildMarkup.js"></script>
 
     <div id="loader">
         <div class="loading">
@@ -47,6 +55,9 @@
             <h2>Loading</h2>
         </div>
     </div>
+
+    <script src="./static/scripts/main.js"></script>
+    <script src="./static/scripts/buildMarkup.js"></script>
 </body>
 
 </html>
