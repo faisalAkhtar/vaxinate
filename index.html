@@ -5,6 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Faisal Akhtar">
+    <meta name="title" content="Vaxinate">
+    <meta name="description" content="Locating vaccines in Delhi💉💉">
+    <meta name="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://faisalakhtar.github.io/vaxinate/">
+    <meta property="og:site_name" content="VAXINATE">
+    <meta property="og:title" content="VAXINATE">
+    <meta property="og:description" content="Locating vaccines in Delhi💉💉">
+    <meta property="og:image" itemprop="image" content="https://faisalakhtar.github.io/static/logo.png">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://faisalakhtar.github.io/vaxinate/">
+    <meta name="twitter:site_name" content="VAXINATE">
+    <meta name="twitter:title" content="VAXINATE">
+    <meta name="twitter:description" content="Locating vaccines in Delhi💉💉">
+    <meta name="twitter:type" content="website">
+    <meta name="twitter:image" itemprop="image" content="https://faisalakhtar.github.io/static/logo.png">
+    <meta name="twitter:image:alt" content="Locating vaccines in Delhi💉💉">
+    <link rel="shortcut icon" href="https://faisalakhtar.github.io/img/logo/favicon-32x32.png" type="image/x-icon">
+    <link rel="icon" href="https://faisalakhtar.github.io/img/logo/favicon-32x32.png" type="image/x-icon">
     <title>VAXINATE</title>
     <link rel="stylesheet" href="./static/style.css">
 </head>
@@ -13,7 +36,7 @@
     <header>
         <div class="headerWrapper">
             <h1>Vaxinate</h1>
-    
+
             <form onchange="getVaccines(this)" onsubmit="return false">
                 <div class="vaccine">
                     <input type="radio" name="vaccine" id="COVAXIN" value="COVAXIN" checked>
@@ -21,7 +44,7 @@
                     <input type="radio" name="vaccine" id="COVISHIELD" value="COVISHIELD">
                     <label for="COVISHIELD">Covishield</label>
                 </div>
-    
+
                 <div class="district">
                     <select name='district'>
                         <option value="141">Central Delhi</option>
@@ -38,7 +61,9 @@
                     </select>
                 </div>
             </form>
-    
+
+            <p>This is a simple website that locates vaccines across Delhi, India. It uses Government of India's public API to fetch vaccines and maybe upto 5 minutes old. Full project on my <a href="https://github.com/faisalAkhtar/vaxinate/">Github.</a></p>
+
             <footer>
                 <p>Made with &#10084; by <a target="_blank" href="https://faisalakhtar.github.io/">Faisal Akhtar</a></p>
             </footer>
