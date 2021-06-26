@@ -10,8 +10,8 @@ The quirky font, if you are wondering, is actually my sister's handwriting conve
 
 ## Screenshots
 
-![Laptop screenshot](laptop.png)
-![Phone's screenshot](phone.png)
+![Laptop screenshot](./static/laptop.png)
+![Phone's screenshot](./static/phone.png)
 
 ## Acknowledgements
 - The API used is Govt of India's open API for public
