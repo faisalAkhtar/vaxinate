@@ -13,7 +13,7 @@ function displayData(prefferedVaccine, prefferedDistrict) {
     htm += "<div class='bag'>"
     dateArr.forEach(date => {
         htm += "<div class='col'>"
-        htm += "<div class='dat'>" + date + "</div>"
+        htm += "<div class='dat'>" + getCuteDateString(date) + "</div>"
 
         centers.forEach(item => {
             col += processData(item, date, prefferedVaccine)
@@ -107,6 +107,14 @@ function getThullu() {
     div += "</div> \n"
 
     return div
+}
+
+function getCuteDateString(dString) {
+    let mArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let dArray = dString.split("-")
+    let sup = dArray[0] === "1" || dArray[0] === "21" || dArray[0] === "31" ? 'st' : (dArray[0] === "2" || dArray[0] === "22" ? 'nd' : (dArray[0] === "3" || dArray[0] === "23" ? 'rd' : 'th'))
+    dArray.forEach((_, i) => dArray[i] = parseInt(dArray[i]))
+    return dArray[0] + '<sup>' + sup + '</sup> ' + mArray[dArray[1] - 1]
 }
 
 function getSevenDates() {

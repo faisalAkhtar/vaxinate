@@ -173,8 +173,9 @@ input[type="radio"]:checked+label {
 .col {
     height: calc(100vh - 5px);
     min-width: 410px;
-    margin: 0 10px;
+    padding: 0 10px;
     overflow: auto;
+    border-right: 1px solid rgba(245, 222, 179, 0.1);
 }
 
 .noneCard {
@@ -188,6 +189,7 @@ input[type="radio"]:checked+label {
     width: 100%;
     background-color: var(--primary);
     padding: 10px;
+    margin-bottom: 5px;
     text-align: center;
     font-weight: bold;
     position: sticky;
@@ -206,12 +208,13 @@ input[type="radio"]:checked+label {
     display: flex;
     flex-direction: column;
     font-weight: bold;
+    word-break: break-word;
 }
 
 .card .top {
     display: flex;
     align-items: center;
-    height: 150px;
+    min-height: 150px;
 }
 
 .card .top .left {
