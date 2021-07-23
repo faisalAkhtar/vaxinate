@@ -44,7 +44,7 @@ function processData(centre, prefferedDate, prefferedVaccines) {
         if (centre['vaccine_fees']) {
             fees = "Rs " + centre['vaccine_fees'][0]['fee']
         } else {
-            fees = "Rs " + centre['vaccine_fees']
+            fees = centre['vaccine_fees'] ? "Rs " + centre['vaccine_fees'] : "N<span style='font-weight:normal'>/</span>A"
         }
     }
     feesClass = fees == "FREE" ? "free" : "paid"
