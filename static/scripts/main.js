@@ -65,11 +65,11 @@ function getFormValues() {
 
     variables.forEach(item => {
         temp = document.getElementsByName(item)
-        if (temp[0].type == "radio") {
+        if (temp[0].type == "checkbox") {
+            values[item] = []
             for (let ind = 0; ind < temp.length; ind++) {
                 if (temp[ind].checked) {
-                    values[item] = temp[ind].value
-                    break
+                    values[item].push(temp[ind].value)
                 }
             }
         } else {
@@ -94,8 +94,11 @@ function removeLoader() {
     }, 1500)
 }
 
-function getVaccines(form) {
-    displayData(form.vaccine.value, form.district.value)
+function getVaccines() {
+    let values = getFormValues(),
+        vaccine = values["vaccine"],
+        district = values["district"]
+    displayData(vaccine, district)
 }
 
 function getDateString(dateObj) {
