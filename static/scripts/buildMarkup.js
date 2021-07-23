@@ -1,4 +1,4 @@
-function displayData(prefferedVaccine, prefferedDistrict) {
+function displayData(prefferedVaccines, prefferedDistrict) {
     let htm = ""
     let hospitals = JSON.parse(localStorage.getItem("hospitals_" + prefferedDistrict))
 
@@ -16,7 +16,7 @@ function displayData(prefferedVaccine, prefferedDistrict) {
         htm += "<div class='dat'>" + getCuteDateString(date) + "</div>"
 
         centers.forEach(item => {
-            col += processData(item, date, prefferedVaccine)
+            col += processData(item, date, prefferedVaccines)
         })
 
         if (col === "") {
@@ -35,7 +35,7 @@ function displayData(prefferedVaccine, prefferedDistrict) {
     document.querySelector("#app").innerHTML = htm
 }
 
-function processData(centre, prefferedDate, prefferedVaccine) {
+function processData(centre, prefferedDate, prefferedVaccines) {
     let cards = ""
     let fees, feesClass, dose1, dose1Class, dose2, dose2Class
 
@@ -51,7 +51,7 @@ function processData(centre, prefferedDate, prefferedVaccine) {
 
     centre.sessions.forEach(session => {
         // PREFERRABLE OPTIONS
-        if (session['date'] == prefferedDate && session['min_age_limit'] == "18" && session['vaccine'] == prefferedVaccine) {
+        if (session['date'] == prefferedDate && session['min_age_limit'] == "18" && prefferedVaccines.indexOf(session['vaccine']) >= 0) {
 
             dose1 = session['available_capacity_dose1'] == "0" ? "&times;" : session['available_capacity_dose1']
             dose1Class = session['available_capacity_dose1'] == "0" ? "oops" : "yayy"

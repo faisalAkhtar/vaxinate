@@ -37,12 +37,20 @@
         <div class="headerWrapper">
             <h1>Vaxinate</h1>
 
-            <form onchange="getVaccines(this)" onsubmit="return false">
+            <form onchange="getVaccines()" onsubmit="return false">
                 <div class="vaccine">
-                    <input type="radio" name="vaccine" id="COVAXIN" value="COVAXIN" checked>
-                    <label for="COVAXIN">Covaxin</label>
-                    <input type="radio" name="vaccine" id="COVISHIELD" value="COVISHIELD">
-                    <label for="COVISHIELD">Covishield</label>
+                    <div>
+                        <input type="checkbox" name="vaccine" id="COVAXIN" value="COVAXIN">
+                        <label for="COVAXIN">Covaxin</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="vaccine" id="COVISHIELD" value="COVISHIELD">
+                        <label for="COVISHIELD">Covishield</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="vaccine" id="SPUTNIK" value="SPUTNIK V">
+                        <label for="SPUTNIK">Sputnik V</label>
+                    </div>
                 </div>
 
                 <div class="district">
