@@ -6,22 +6,24 @@ window.onload = () => {
 function init() {
     checkPreviouslySavedObjects()
 
-    displayData(
-        document.getElementsByName("vaccine")[0].value,
-        document.getElementsByName("district")[0].value
-    )
+    let values = getFormValues(),
+        vaccine = values["vaccine"],
+        district = values["district"]
+
+    displayData(vaccine, district)
 }
 
 function checkPreviouslySavedObjects() {
+    let district_id = document.getElementsByName("district")[0].value
     if (localStorage.getItem("faisalTime") == null) {
         console.log("INIT")
-        getHospitalsFromAPI("141")
+        getHospitalsFromAPI(district_id)
     } else {
         let then = new Date(localStorage.getItem("faisalTime"))
         let now = new Date()
         if ((now - then) / 1000 > (5 * 60)) {
             console.log("REFRESH")
-            getHospitalsFromAPI("141")
+            getHospitalsFromAPI(district_id)
         } else {
             console.log("DATA FETCHED AT :  " + then)
         }
