@@ -88,12 +88,15 @@ function addLoader() {
 }
 
 function removeLoader() {
-    setTimeout(() => {
-        document.querySelector(".loading").style.opacity = 0
-    }, 500)
-    setTimeout(() => {
-        document.querySelector(".loading").remove()
-    }, 1500)
+    let loader = document.querySelector(".loading")
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = 0
+        }, 500)
+        setTimeout(() => {
+            loader.remove()
+        }, 1500)
+    }
 }
 
 function getVaccines() {
