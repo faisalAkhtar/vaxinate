@@ -95,14 +95,14 @@ p {
 }
 
 form {
-    padding: 10px 20px;
+    padding: 10px 0;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
 form>div {
-    margin: 20px auto;
+    margin: 10px auto;
     border-radius: 5px;
     font-weight: bold;
 }
@@ -338,13 +338,14 @@ select:active {
         width: calc(100vw - 5px);
     }
     form {
-        display: flex;
-        flex-direction: column;
         overflow: hidden;
     }
     form>div {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         max-width: unset;
+        width: 100%;
     }
     .col {
         height: calc(100vh - 80px);
